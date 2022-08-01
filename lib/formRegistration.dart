@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_tiga/routerdua.dart';
 
 class formRegistration extends StatefulWidget {
   const formRegistration({Key? key}) : super(key: key);
 
+
   @override
   State<formRegistration> createState() => _formRegistrationState();
 }
-
 class _formRegistrationState extends State<formRegistration> {
   TextEditingController ctrusername = new TextEditingController();
   TextEditingController ctrpassword = new TextEditingController();
   int id = 1;
-  
-
+  String myPhone = "-";
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +60,26 @@ class _formRegistrationState extends State<formRegistration> {
               Text("Female")
             ],
           ),
+          Text("phone : " +myPhone),
+
+
+          ElevatedButton(onPressed: () async {
+                  final result = await Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const routerdua()),
+                  );
+                print("hasil :" +result.toString());
+                setState(() {
+                    myPhone = result.toString();
+                  });
+    }, child: Text("phonr number"),),
+
+
           Center(
             child: Container(
               width: 200,
-              child: ElevatedButton(onPressed: (){}, child: Text('SUBMIT'),),
+              child: ElevatedButton(onPressed: (){
+              }, child: Text('SUBMIT'),),
             )
 
           )
@@ -75,3 +91,4 @@ class _formRegistrationState extends State<formRegistration> {
     );
   }
 }
+
